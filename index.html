@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <title>Gerador de Planilhas</title>
+  <link rel="stylesheet" href="static/stylesheets/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+</head>
+
+<body>
+  
+  <header class="system-header wrap">
+    <nav class="nav" role="navigation" aria-label="Menu principal">
+      <div class="brand">
+        <div>
+          <h1>Gerador de Planilhas</h1>
+        </div>
+      </div>
+
+      <div class="menu" id="desktopMenu">
+        <a href="https://wa.me/+5571986015193" target="_blank">Ajuda</a>
+      </div>
+
+      <button class="hamburger" id="hamburgerBtn" aria-expanded="false" aria-controls="mobileMenu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round">
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#">Serviços</a>
+      <a href="#">Portfólio</a>
+    </div>
+  </header>
+
+  
+  <main class="system-main">
+    <h1 class="system-title1 title-spacement">Gerador de Planilhas</h1>
+
+    <h2 class="title-spacement">Definir colunas</h2>
+
+    <div id="colunas"></div>
+
+    <button id="addColuna" class="system-action-buttons system-action-buttons-add"> ➕ Adicionar Coluna</button>
+
+    <button id="confirmarColunas" class="system-action-buttons">Confirmar Colunas</button>
+
+    <button style="background:#dc3545" id="limparRascunho" class="system-action-buttons">🗑 Limpar Rascunho</button>
+
+    <div id="formulario" style="display:none;">
+      <h2 class="system-subtitle title-spacement">Adicionar dados</h2>
+
+      <div id="inputs"></div>
+
+      <label>Nome do arquivo Excel (nome da planilha):</label>
+      <input id="nomeArquivo" placeholder="Ex: planilha.xlsx" value="planilha.xlsx">
+      <button id="addLinha" class="system-action-buttons system-action-buttons-add">➕ Adicionar Linha</button>
+
+      <button id="addDado" class="system-action-buttons system-action-buttons-add">➕ Adicionar Dado</button>
+
+      <button id="baixar" class="system-action-buttons">⬇ Baixar planilha</button>
+
+      <button style="background:#17a2b8" id="salvarEdicoes" class="system-action-buttons">💾 Salvar Edições</button>
+
+      <div id="adicionarDadoForm">
+        <label>Selecione a Coluna:</label>
+        <select id="colunaSelect"></select>
+        <label>Digite o Valor:</label>
+        <input id="valorDado" placeholder="Digite o valor...">
+
+        <button id="confirmarDado" class="system-action-buttons">Confirmar</button>
+      </div>
+
+
+      <div id="importarContainer" class="title-spacement-import">
+        
+        <h3>Importar arquivo TXT / Excel (importar arquivo do bloco de notas ou de outra planilha)</h3>
+        
+        <p>Selecione um arquivo <strong>.txt</strong> (apenas dados) ou <strong>.xlsx</strong></p>
+        <input type="file" id="fileInput" accept=".txt,.xlsx">
+        <div id="previewTxt" style="display:none; margin-top:10px;">
+          <div class="select-all-row">
+            <small style="margin-left:auto">Marque as linhas que vão ser importadas</small>
+          </div>
+          <div id="previewTxtTable" style="overflow:auto; max-height:220px; border:1px solid #eee;"></div>
+
+          <label style="margin-top:10px;">Escolha uma linha do TXT para usar como <strong>nome das colunas</strong>
+            (opcional):</label>
+          <select id="headerLineSelect">
+            <option value="">(Nenhuma)</option>
+          </select>
+
+          <button id="useHeaderBtn" class="system-action-buttons">Usar linha selecionada como colunas</button>
+
+
+          <h4>Mapear TXT: colunas da planilha</h4>
+          <div id="mappingArea"></div>
+          <div style="margin-top:8px">
+
+            <button id="applyMappingBtn" class="system-action-buttons">Importar usando mapeamento (apenas linhas marcadas)</button>
+
+          </div>
+        </div>
+      </div>
+
+
+      <table id="tabela">
+        <thead>
+          <tr id="cabecalho"></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+
+      <h3 class="title-spacement">Pré-visualização da planilha</h3>
+      <div id="preview">
+  
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="system-footer">
+    <div class="footer-card">
+      <div class="footer-grid">
+        <div class="footer-brand">
+
+          <div class="copyright">
+
+
+            <p>Desenvolvido por <a href="https://github.com/thauanoliveiraa" class="system-footer-link" target="_blank">Thauan
+                Oliveira</a> ®</p>
+
+          </div>
+        </div>
+      </div>
+  </footer>
+
+  <div id="loader-overlay">
+    <div class="loader-spinner"></div>
+    <p>Carregando...</p>
+  </div>
+
+  <script src="static/scripts/scripts.js"></script>
+
+</body>
+</html>
